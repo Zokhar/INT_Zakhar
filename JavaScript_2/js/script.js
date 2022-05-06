@@ -18,67 +18,27 @@ function getAge(arr){
 	return arr + 1;
 }
 
-function getRemainder(arr){
-	let z = arr.filter(function(num){
-		return num > 0;
-	});
-	return z;
+function getRemainder(x, y){
+	return x % y;
 }
 
-function faceControl(arr, poni){
-
-	let p = arr.includes(poni);
-	if (p == true)
-		return poni;
+function faceControl(arr){
+	if (arr >= 18)
+		return "Welcome";
 	else 
-		return p;
+		return "Отказ";
 }
 
-function getNextAge(arr, inc){
-	let i = arr.includes(inc);
-	return i;
+function getNextAge(age){
+	if (age != '')
+		return Number(age) + 1;
+	else
+		return 0;
 }
 
 
 function canRide(arr){
-	let s = arr.map(function(num){
-		return num.length;
-	})
-	return s;
-}
-
-
-function getWithSpaces(arr){
-	let sum = 0;
-	arr.forEach(function(s){sum = sum + s.length})
-	let a = [arr.join(" "), sum];
-	return a;
-}
-
-function getWithSpaces(arr){
-	let sum = 0;
-	arr.forEach(function(s){sum = sum + s.length})
-	let a = [arr.join(" "), sum];
-	return a;
-}
-
-function getEpisodes(anime){
-	return `Аниме ${anime.title} включает ${anime.episodes} серий`;
-}
-
-
-
-const triple = (x) => {
-	return parseInt(x)*3;
-}
-
-const getAvgGlucose = (check) => {
-	let sum = 0;
-	check.forEach(num => {
-		sum = sum + num;
-	})
-	n = check.length;
-	return ((sum/n).toFixed(1));
+	return arr >= 140;
 }
 
 task1.onclick = function(){
@@ -88,22 +48,21 @@ task1.onclick = function(){
 
 task2.onclick = function(){
 	
-	result2.innerHTML = "Результат: " + getAboveZero([1,-3, -2, 4, 10]);
+	result2.innerHTML = "Результат: " + getRemainder(10, 3);
 }
 
 task3.addEventListener("input", () => {
 	
-	result3.innerHTML = "Результат: " + getPonies(['TwilightSparkle', 'RainbowDash', 'AppleJack', 'Rarity', 'Pinkie Pie', 'Fluttershy'], task3.value);
+	result3.innerHTML = "Результат: " + faceControl(task3.value);
 
 })
 
 task4.addEventListener("input", () =>{
 	
-	result4.innerHTML = "Результат: " + isTxIncluded(["0xaea0", "0x8f80", "0xf3ad", "0x17ec"], task4.value);
+	result4.innerHTML = "Результат: " + getNextAge(task4.value);
 })
 
-task5.onclick = function(){
+task5.addEventListener("input", () =>{
 	
-	result5.innerHTML = "Результат: " + getSizes(["Moscow", "Coding", "School"]);
-}
-
+	result5.innerHTML = "Результат: " + canRide(task5.value);
+})
